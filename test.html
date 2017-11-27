@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test - jquery.fn.scrollx</title>
+  <style>
+    #test {
+      margin: 30px auto;
+      padding: 20px;
+      width: 400px;
+      height: 400px;
+      overflow: scroll;
+      border: 1px solid #ddd;
+    }
+    #test-content {
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(orange, blue);
+    }
+    button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <center>
+    <p>Open console to view output</p>
+
+    <button>unlistenScrollUp</button>
+    <button>unlistenScrollDown</button>
+    <button>unlistenScrollLeft</button>
+    <button>unlistenScrollRight</button>
+  </center>
+
+  <div id="test">
+    <div id="test-content"></div>
+  </div>
+  
+<script src="https://unpkg.com/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="dist.js"></script>
+<script>
+$('#test')
+  .scrollup(
+    function () {
+      console.log('scrollup')
+    },
+    function (f) {
+      window.unlistenScrollUp = f
+    }
+  )
+  .scrolldown(
+    function () {
+      console.log('scrolldown')
+    },
+    function (f) {
+      window.unlistenScrollDown = f
+    }
+  )
+  .scrollleft(
+    function () {
+      console.log('scrollleft')
+    },
+    function (f) {
+      window.unlistenScrollLeft = f
+    }
+  )
+  .scrollright(
+    function () {
+      console.log('scrollright')
+    },
+    function (f) {
+      window.unlistenScrollRight = f
+    }
+  )
+
+$('button').on('click', function () {
+  window[this.innerHTML.trim()]()
+  $(this).remove()
+})
+</script>
+</body>
+</html>

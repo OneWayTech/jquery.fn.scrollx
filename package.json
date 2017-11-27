@@ -1,0 +1,30 @@
+{
+  "name": "jquery.fn.scrollx",
+  "version": "1.0.0",
+  "description": "add scroll[up|down|left|right] to jQuery.prototype",
+  "author": "Ken Berkeley <kenberkeley@foxmail.com>",
+  "main": "dist.js",
+  "scripts": {
+    "lint": "standard src.js",
+    "prebuild": "npm run lint",
+    "build": "uglifyjs src.js -c -m -o dist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenberkeley/jquery.fn.scrollx.git"
+  },
+  "keywords": [
+    "scroll",
+    "scrollup",
+    "scrolldown",
+    "scrollleft",
+    "scrollright",
+    "jquery",
+    "plugin"
+  ],
+  "devDependencies": {
+    "standard": "^10.0.3",
+    "uglify-js": "^3.0.24"
+  },
+  "license": "MIT"
+}
