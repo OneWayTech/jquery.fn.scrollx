@@ -23,7 +23,7 @@ const listener = () => { ... }
 let unlistener
 const unlistenerReceiver = f => { unlistener = f }
 
-$('#foo').scrollup(listener, unlistenerReceiver)
+$('#foo').scrollup(listener, unlistenerReceiver) // unlistenerReceiver is optional
 $('#bar').on('click', unlistener)
 ```
 
