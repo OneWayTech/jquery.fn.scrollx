@@ -16,8 +16,8 @@
 
 ## § Usage
 ```js
-import 'jquery.fn.scrollx'
 import $ from 'jquery'
+require('jquery.fn.scrollx')($)
 
 const listener = () => { ... }
 let unlistener
