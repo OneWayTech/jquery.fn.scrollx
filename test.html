@@ -27,10 +27,10 @@
   <center>
     <p>Open console to view output</p>
 
-    <button>unlistenScrollUp</button>
-    <button>unlistenScrollDown</button>
-    <button>unlistenScrollLeft</button>
-    <button>unlistenScrollRight</button>
+    <button>unlistenScrollup</button>
+    <button>unlistenScrolldown</button>
+    <button>unlistenScrollleft</button>
+    <button>unlistenScrollright</button>
   </center>
 
   <div id="test">
@@ -46,7 +46,7 @@ $('#test')
       console.log('scrollup')
     },
     function (f) {
-      window.unlistenScrollUp = f
+      window.unlistenScrollup = f
     }
   )
   .scrolldown(
@@ -54,7 +54,7 @@ $('#test')
       console.log('scrolldown')
     },
     function (f) {
-      window.unlistenScrollDown = f
+      window.unlistenScrolldown = f
     }
   )
   .scrollleft(
@@ -62,7 +62,7 @@ $('#test')
       console.log('scrollleft')
     },
     function (f) {
-      window.unlistenScrollLeft = f
+      window.unlistenScrollleft = f
     }
   )
   .scrollright(
@@ -70,7 +70,7 @@ $('#test')
       console.log('scrollright')
     },
     function (f) {
-      window.unlistenScrollRight = f
+      window.unlistenScrollright = f
     }
   )
 
