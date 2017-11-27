@@ -16,14 +16,15 @@
 
 ## § Usage
 ```js
-var listener = function () { ... }
+import 'jquery.fn.scrollx'
+import $ from 'jquery'
 
-var unlistener
-var unlistenerReceiver = function (f) {
-  unlistener = f
-} 
+const listener = () => { ... }
+let unlistener
+const unlistenerReceiver = f => { unlistener = f }
 
-$('#div').scrollup(listener, unlistenerReceiver)
+$('#foo').scrollup(listener, unlistenerReceiver)
+$('#bar').on('click', unlistener)
 ```
 
 ## § [Demo](https://kenberkeley.github.io/jquery.fn.scrollx/test.html)
