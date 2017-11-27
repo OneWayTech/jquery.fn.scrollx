@@ -1,11 +1,11 @@
 ;(function (factory) {
   /* eslint-disable */
-  if (typeof define === 'function' && define.amd) { // AMD
-    define(['jquery'], factory)
-  } else if (typeof module !== 'undefined' && module.exports) { // CommonJS
-    module.exports = factory
-  } else { // Global
-    factory(jQuery)
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = factory // CommonJS
+  } else if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory) // AMD
+  } else {
+    factory(jQuery) // Global
   }
   /* eslint-enable */
 })(function ($) {
