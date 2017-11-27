@@ -1,5 +1,3 @@
-# Add `scroll[up|down|left|right]` to `jQuery.prototype`
-
 [![npm version][npm-v-img]][npm-url]
 [![npm download][npm-dl-img]][npm-url]
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
