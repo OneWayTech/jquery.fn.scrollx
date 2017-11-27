@@ -1,6 +1,6 @@
 {
   "name": "jquery.fn.scrollx",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "add scroll[up|down|left|right] to jQuery.prototype",
   "author": "Ken Berkeley <kenberkeley@foxmail.com>",
   "main": "dist.js",
