@@ -9,7 +9,7 @@
 
 ### ⊙ CDN
 ```html
-<script src="//unpkg.com/kenberkeley/jquery.fn.scrollx"></script>
+<script src="//unpkg.com/jquery.fn.scrollx"></script>
 ```
 
 ## § Usage
