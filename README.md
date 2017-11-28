@@ -1,4 +1,4 @@
-# Add `scrollup / scrolldown / scrollleft / scrollright` to `jQuery.prototype`
+# Add `scrollup / scrolldown / scrollleft / scrollright` to `jQuery.prototype` (debounce integrated)
 
 [![npm version][npm-v-img]][npm-url]
 [![npm download][npm-dl-img]][npm-url]
@@ -19,9 +19,13 @@
 import $ from 'jquery'
 require('jquery.fn.scrollx')($)
 
-const listener = () => { ... }
+const listener = offset => {
+  console.log(offset)
+}
 let unlistener
-const unlistenerReceiver = f => { unlistener = f }
+const unlistenerReceiver = f => {
+  unlistener = f
+}
 
 $('#foo').scrollup(listener, unlistenerReceiver) // unlistenerReceiver is optional
 $('#bar').on('click', unlistener)

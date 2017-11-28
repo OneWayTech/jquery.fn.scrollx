@@ -13,8 +13,8 @@
       border: 1px solid #ddd;
     }
     #test-content {
-      width: 600px;
-      height: 600px;
+      width: 800px;
+      height: 800px;
       background: linear-gradient(orange, blue);
     }
     button {
@@ -42,35 +42,35 @@
 <script>
 $('#test')
   .scrollup(
-    function () {
-      console.log('scrollup')
+    function (offset) {
+      console.log('scrollup:', offset + 'px')
     },
-    function (f) {
-      window.unlistenScrollup = f
+    function (unlistener) {
+      window.unlistenScrollup = unlistener
     }
   )
   .scrolldown(
-    function () {
-      console.log('scrolldown')
+    function (offset) {
+      console.log('scrolldown:', offset + 'px')
     },
-    function (f) {
-      window.unlistenScrolldown = f
+    function (unlistener) {
+      window.unlistenScrolldown = unlistener
     }
   )
   .scrollleft(
-    function () {
-      console.log('scrollleft')
+    function (offset) {
+      console.log('scrollleft:', offset + 'px')
     },
-    function (f) {
-      window.unlistenScrollleft = f
+    function (unlistener) {
+      window.unlistenScrollleft = unlistener
     }
   )
   .scrollright(
-    function () {
-      console.log('scrollright')
+    function (offset) {
+      console.log('scrollright:', offset + 'px')
     },
-    function (f) {
-      window.unlistenScrollright = f
+    function (unlistener) {
+      window.unlistenScrollright = unlistener
     }
   )
 
