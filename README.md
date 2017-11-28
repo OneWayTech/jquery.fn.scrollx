@@ -4,6 +4,9 @@
 [![npm download][npm-dl-img]][npm-url]
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## § Demo
+[Demo](https://onewaytech.github.io/jquery.fn.scrollx/test.html) ([source code of demo](https://github.com/onewaytech/jquery.fn.scrollx/blob/master/test.html))
+
 ## § Installation
 
 ### ⊙ npm
@@ -30,9 +33,6 @@ const unlistenerReceiver = f => {
 $('#foo').scrollup(listener, unlistenerReceiver) // unlistenerReceiver is optional
 $('#bar').on('click', unlistener)
 ```
-
-## § [Demo](https://onewaytech.github.io/jquery.fn.scrollx/test.html)
-> [Source code of demo](https://github.com/onewaytech/jquery.fn.scrollx/blob/master/test.html)
 
 ## § Reference
 * https://stackoverflow.com/a/7076832/5172890
