@@ -27,8 +27,8 @@ $('#foo').scrollup(listener, unlistenerReceiver) // unlistenerReceiver is option
 $('#bar').on('click', unlistener)
 ```
 
-## § [Demo](https://kenberkeley.github.io/jquery.fn.scrollx/test.html)
-> [Source code of demo](https://github.com/kenberkeley/jquery.fn.scrollx/blob/master/test.html)
+## § [Demo](https://onewaytech.github.io/jquery.fn.scrollx/test.html)
+> [Source code of demo](https://github.com/onewaytech/jquery.fn.scrollx/blob/master/test.html)
 
 ## § Reference
 * https://stackoverflow.com/a/7076832/5172890
