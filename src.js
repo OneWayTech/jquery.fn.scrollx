@@ -12,18 +12,26 @@
   'up down left right'.split(' ').forEach(function (direction) {
     /**
      * Add scroll[up|down|left|right] to jQuery.prototype
-     * @param  {Function}  listener(offset: Number)
-     * @param  {Function?} unlistenerReceiver(unlistener: Function)
-     * @return {jQuery wrapped el}
+     * @param  {Function}  listener(delta <Number>, currentOffset <Number>, lastOffset <Number>)
+     * @param  {Number? }  period - for debounce
+     * @param  {Function?} unlistenerReceiver(unlistener <Function>)
+     * @return {this}      chainable
      */
-    $.fn['scroll' + direction] = function (listener, unlistenerReceiver) {
+    $.fn['scroll' + direction] = function (listener, period, unlistenerReceiver) {
+      switch (typeof period) {
+        case 'function':
+          unlistenerReceiver = period
+        case 'undefined': // eslint-disable-line no-fallthrough
+          period = 100
+      }
+
       var el = this
-      var scrollListener = scrollListeners.filter(function (inst) {
-        return inst.el === el
+      var scrollListener = scrollListeners.filter(function (instance) {
+        return instance.el === el
       })[0]
 
       if (!scrollListener) {
-        scrollListener = new ScrollListener(el)
+        scrollListener = new ScrollListener(el, period)
         scrollListeners.push(scrollListener)
       }
 
@@ -33,15 +41,16 @@
         scrollListener[direction].splice(scrollListener[direction].indexOf(listener), 1)
       })
 
-      return el
+      return el // return this
     }
   })
 
   /**
    * Class ScrollListener
-   * @param {jQuery wrapped el} el
+   * @param {jQuery this} el
+   * @param {Number}      period - for debounce
    */
-  function ScrollListener (el) {
+  function ScrollListener (el, period) {
     var ctx = this
     ctx.el = el // identifier
 
@@ -59,7 +68,7 @@
       .on('scroll', debounce(function () {
         lastOffsetX = $el.scrollLeft()
         lastOffsetY = $el.scrollTop()
-      }, 100, true))
+      }, period, true))
       .on('scroll', debounce(function () {
         var curOffsetX = $el.scrollLeft()
         var curOffsetY = $el.scrollTop()
@@ -71,7 +80,7 @@
 
         lastOffsetX = curOffsetX
         lastOffsetY = curOffsetY
-      }, 100))
+      }, period))
   }
 
   /**
@@ -79,7 +88,7 @@
    * @param  {Number}     v2
    * @param  {Function[]} listeners1
    * @param  {Function[]} listeners2
-   * @param  {jQuery wrapped el}
+   * @param  {Context}    el
    */
   function alternativeRunner (v1, v2, listeners1, listeners2, el) {
     var listeners
@@ -92,24 +101,25 @@
     }
 
     listeners.forEach(function (listener) {
-      listener.call(el, Math.abs(v1 - v2)) // callback(offset: Number)
+      // callback(delta, currentOffset, lastOffset)
+      listener.call(el, Math.abs(v1 - v2), v2, v1)
     })
   }
 
   // refers to https://davidwalsh.name/javascript-debounce-function
   function debounce (fn, ms, immediate) {
-    var timeout
+    var timerId
     return function () {
+      clearTimeout(timerId)
       var ctx = this
       var args = arguments
-      var later = function () {
-        timeout = null
+
+      immediate && !timerId && fn.apply(ctx, args)
+
+      timerId = setTimeout(function () {
+        timerId = null
         immediate || fn.apply(ctx, args)
-      }
-      var callNow = immediate && !timeout
-      clearTimeout(timeout)
-      timeout = setTimeout(later, ms)
-      callNow && fn.apply(ctx, args)
+      }, ms)
     }
   }
 })

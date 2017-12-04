@@ -18,20 +18,30 @@
 ```
 
 ## § Usage
+
 ```js
 import $ from 'jquery'
 require('jquery.fn.scrollx')($)
 
-const listener = offset => {
-  console.log(offset)
-}
-let unlistener
-const unlistenerReceiver = f => {
-  unlistener = f
-}
+const period = 200 // for debounce
 
-$('#foo').scrollup(listener, unlistenerReceiver) // unlistenerReceiver is optional
+const listener = (delta, currentOffset, lastOffset) => { ... }
+let unlistener
+const unlistenerReceiver = f => { unlistener = f }
+
+$('#foo').scrollup(listener, period, unlistenerReceiver)
 $('#bar').on('click', unlistener)
+```
+  
+`listener` is required  
+`period` (defaults to `100` ms) and `unlistenerReceiver` are optional
+
+e.g.
+
+```js
+$('#foo').scrolldown(listener)
+$('#foo').scrollleft(listener, 300)
+$('#foo').scrollright(listener, unlistenerReceiver)
 ```
 
 ## § Reference
